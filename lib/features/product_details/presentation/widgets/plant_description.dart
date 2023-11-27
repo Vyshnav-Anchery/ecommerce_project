@@ -6,7 +6,6 @@ class ProductDescription extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 250,
       width: MediaQuery.sizeOf(context).width,
       child: const Column(children: [
         SizedBox(height: 20),

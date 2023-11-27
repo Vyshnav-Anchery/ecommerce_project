@@ -15,7 +15,6 @@ class AllCategoriesList extends StatelessWidget {
       buildWhen: (previous, current) => current is! HomeActionState,
       listener: (context, state) {
         if (state is HomeCategoryChangedActionState) {
-          print(homeBloc.selectedIndex);
           homeBloc.add(HomeInitialEvent());
         }
       },
