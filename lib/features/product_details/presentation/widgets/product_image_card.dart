@@ -1,4 +1,3 @@
-import 'package:ecommerce_project/core/constants/app_theme.dart';
 import 'package:flutter/material.dart';
 
 class ProductImageCard extends StatelessWidget {
@@ -11,7 +10,7 @@ class ProductImageCard extends StatelessWidget {
         height: MediaQuery.sizeOf(context).height / 2,
         width: MediaQuery.sizeOf(context).width,
         child: Card(
-          color: AppThemeConstants.cardColor,
+          color: Theme.of(context).primaryColor,
           child: Center(
               child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -24,10 +23,10 @@ class ProductImageCard extends StatelessWidget {
                   scrollDirection: Axis.horizontal,
                   itemCount: 4,
                   itemBuilder: (BuildContext context, int index) {
-                    return Container(
+                    return const SizedBox(
                         height: 100,
                         width: 90,
-                        child: const Card(
+                        child: Card(
                           child: Center(child: Text("image")),
                         ));
                   },

@@ -1,8 +1,8 @@
 import 'package:ecommerce_project/core/constants/app_constants.dart';
-import 'package:ecommerce_project/features/home_screen/presentation/widges/categories_list.dart';
-import 'package:ecommerce_project/features/home_screen/presentation/widges/products.dart';
+import 'package:ecommerce_project/features/home_screen/presentation/widgets/categories_list.dart';
+import 'package:ecommerce_project/features/home_screen/presentation/widgets/products.dart';
 import 'package:flutter/material.dart';
-import '../widges/offer_card.dart';
+import '../widgets/offer_card.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({super.key});
