@@ -2,7 +2,8 @@ import 'package:ecommerce_project/features/product_details/presentation/widgets/
 import 'package:ecommerce_project/features/product_details/presentation/widgets/product_image_card.dart';
 import 'package:ecommerce_project/features/product_details/presentation/widgets/reviews.dart';
 import 'package:flutter/material.dart';
-import '../widgets/custom_floating_button.dart';
+import '../../../../core/constants/app_theme.dart';
+import '../../../../core/utils/common widgets/custom_elevated_button.dart';
 import '../widgets/sliver_appbar.dart';
 
 class ProductDetails extends StatelessWidget {
@@ -10,21 +11,27 @@ class ProductDetails extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double floatingButtonHeight = MediaQuery.sizeOf(context).height / 14;
     return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: CustomFloatingButton(height: floatingButtonHeight),
-      body: CustomScrollView(
+      persistentFooterAlignment: AlignmentDirectional.center,
+      persistentFooterButtons: [
+        CustomElevatedButton(
+          color: Colors.black,
+          text: "Add to cart",
+          onPressed: () {},
+        ),
+        CustomElevatedButton(
+          color: AppThemeConstants.offerCardColor,
+          text: "Buy now",
+          onPressed: () {},
+        ),
+      ],
+      body: const CustomScrollView(
         slivers: [
-          const SlIverAppbarWidget(),
+          SlIverAppbarWidget(),
           SliverToBoxAdapter(
             child: Padding(
-              padding: EdgeInsets.only(
-                  // top: MediaQuery.of(context).padding.top,
-                  left: 15,
-                  right: 15,
-                  bottom: floatingButtonHeight),
-              child: const Column(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Column(
                 children: [
                   // SizedBox(height: MediaQuery.of(context).padding.top),
                   ProductImageCard(),

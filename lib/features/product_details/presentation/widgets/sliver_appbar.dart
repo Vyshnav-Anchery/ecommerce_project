@@ -1,8 +1,6 @@
 import 'package:ecommerce_project/features/wishlist/presentation/pages/wishlist_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../core/constants/app_constants.dart';
-
 class SlIverAppbarWidget extends StatelessWidget {
   const SlIverAppbarWidget({
     super.key,

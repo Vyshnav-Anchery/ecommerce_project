@@ -1,4 +1,6 @@
 import 'package:ecommerce_project/features/home_screen/presentation/bloc/home_bloc.dart';
+import 'package:ecommerce_project/features/login/presentation/bloc/login_bloc.dart';
+import 'package:ecommerce_project/features/login/presentation/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'core/constants/app_theme.dart';
@@ -19,15 +21,15 @@ class MyApp extends StatelessWidget {
         BlocProvider(
           create: (context) => HomeBloc(),
         ),
-        // BlocProvider(
-        //   create: (context) => SubjectBloc(),
-        // ),
+        BlocProvider(
+          create: (context) => LoginBloc(),
+        ),
       ],
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
         title: 'BloomBay',
         theme: AppThemeConstants.themeData,
-        home: const HomePage(),
+        home: const LoginScreen(),
       ),
     );
   }

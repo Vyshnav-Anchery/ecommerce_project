@@ -33,7 +33,7 @@ class ProductReviews extends StatelessWidget {
             ],
           ),
           SizedBox(
-            height: 300,
+            height: MediaQuery.sizeOf(context).height,
             child: ListView.builder(
                 itemCount: 3,
                 itemBuilder: (context, index) {
