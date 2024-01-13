@@ -1,7 +1,7 @@
-import 'package:ecommerce_project/features/login/domain/entities/login_entities.dart';
+import '../../domain/entities/login_entities.dart';
 
 class LoginModel extends LoginEntities {
-  LoginModel({
+  const LoginModel({
     required String userName,
     required String email,
     required String password,

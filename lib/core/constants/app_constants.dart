@@ -4,6 +4,8 @@ class AppConstants {
   static String appName = "BloomBay";
   static String details = "Details";
   static String reviews = "Reviews";
+  static TextStyle loginAppNameStyle =
+      const TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
   static TextStyle loginHeadingStyle =
-      TextStyle(fontSize: 40, fontWeight: FontWeight.bold);
+      const TextStyle(fontSize: 30, fontWeight: FontWeight.bold);
 }
