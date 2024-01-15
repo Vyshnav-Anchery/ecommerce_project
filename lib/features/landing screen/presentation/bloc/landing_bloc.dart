@@ -10,14 +10,12 @@ class LandingBloc extends Bloc<LandingEvent, LandingState> {
   final LoginUseCase userLoginUseCase;
   LandingBloc(this.userLoginUseCase) : super(LandingInitialState()) {
     on<LandingInitialEvent>(loginInitialEvent);
-    on<LandingLoginPasswordVisibiltyToggleEvent>(
-        loginPasswordVisibiltyToggleEvent);
+    on<LandingPasswordVisibiltyToggleEvent>(loginPasswordVisibiltyToggleEvent);
     on<LoginButtonClickedEvent>(loginButtonClickedEvent);
   }
 
   FutureOr<void> loginPasswordVisibiltyToggleEvent(
-      LandingLoginPasswordVisibiltyToggleEvent event,
-      Emitter<LandingState> emit) {
+      LandingPasswordVisibiltyToggleEvent event, Emitter<LandingState> emit) {
     emit(LoginPasswordToggledActionState());
   }
 
@@ -28,9 +26,9 @@ class LandingBloc extends Bloc<LandingEvent, LandingState> {
 
   FutureOr<void> loginButtonClickedEvent(
       LoginButtonClickedEvent event, Emitter<LandingState> emit) {
-    LoginEntities loginParams = LoginEntities(
-        userName: event.userName, password: event.password, email: '');
-    userLoginUseCase.loginUseCase(params: loginParams);
+    LoginEntities loginParams =
+        LoginEntities(password: event.password, email: event.email);
+    userLoginUseCase.execute(entities: loginParams);
     emit(LoginSuccessfullState());
   }
 }

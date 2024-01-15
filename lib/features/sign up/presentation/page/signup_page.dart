@@ -1,12 +1,11 @@
 import 'package:ecommerce_project/core/constants/app_constants.dart';
 import 'package:ecommerce_project/core/constants/app_theme.dart';
 import 'package:ecommerce_project/core/utils/common%20widgets/common_textfield.dart';
+import 'package:ecommerce_project/features/sign%20up/domain/usecase/signup_usecase.dart';
+import 'package:ecommerce_project/features/sign%20up/presentation/bloc/signup_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/svg.dart';
-
-import '../../domain/usecases/user_login.dart';
-import '../bloc/landing_bloc.dart';
 
 class LoginScreen extends StatelessWidget {
   const LoginScreen({super.key});
@@ -16,20 +15,21 @@ class LoginScreen extends StatelessWidget {
     double cardWidth = MediaQuery.sizeOf(context).height / 2;
     final GlobalKey<FormState> formKey = GlobalKey<FormState>();
     TextEditingController emailEditingController = TextEditingController();
+    TextEditingController nameEditingController = TextEditingController();
     TextEditingController passwordEditingController = TextEditingController();
     bool isObscure = true;
-    LandingBloc loginBloc = LandingBloc(context.read<LoginUseCase>());
+    SignupBloc signUpBloc = SignupBloc(context.read<SignUpUseCase>());
     return Scaffold(
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
-        child: BlocConsumer<LandingBloc, LandingState>(
-          bloc: loginBloc,
-          listenWhen: (previous, current) => current is LoginActionState,
-          buildWhen: (previous, current) => current is! LoginActionState,
+        child: BlocConsumer<SignupBloc, SignupState>(
+          bloc: signUpBloc,
+          listenWhen: (previous, current) => current is SignupActionState,
+          buildWhen: (previous, current) => current is! SignupActionState,
           listener: (context, state) {
             if (state is LoginPasswordToggledActionState) {
               isObscure = !isObscure;
-              loginBloc.add(LandingInitialEvent());
+              signUpBloc.add(SignupInitialEvent());
             }
           },
           builder: (context, state) {
@@ -69,14 +69,14 @@ class LoginScreen extends StatelessWidget {
                                   key: formKey,
                                   child: Column(
                                     children: [
-                                      // CommonTextField(
-                                      //   hintText: "Username",
-                                      //   textEditingController:
-                                      //       nameEditingController,
-                                      //   isObscure: false,
-                                      //   isPassword: false,
-                                      // ),
-                                      // const SizedBox(height: 20),
+                                      CommonTextField(
+                                        hintText: "Username",
+                                        textEditingController:
+                                            nameEditingController,
+                                        isObscure: false,
+                                        isPassword: false,
+                                      ),
+                                      const SizedBox(height: 20),
                                       CommonTextField(
                                         hintText: "Email",
                                         textEditingController:
@@ -91,8 +91,8 @@ class LoginScreen extends StatelessWidget {
                                             passwordEditingController,
                                         isPassword: true,
                                         isObscure: isObscure,
-                                        onpressed: () => loginBloc.add(
-                                            LandingPasswordVisibiltyToggleEvent()),
+                                        onpressed: () => signUpBloc.add(
+                                            SignupPasswordVisibiltyToggleEvent()),
                                       ),
                                       const SizedBox(height: 20),
                                     ],
@@ -104,8 +104,10 @@ class LoginScreen extends StatelessWidget {
                                         backgroundColor:
                                             MaterialStatePropertyAll(
                                                 Colors.orangeAccent)),
-                                    onPressed: () => loginBloc.add(
-                                        LoginButtonClickedEvent(
+                                    onPressed: () => signUpBloc.add(
+                                        SignupButtonClickedEvent(
+                                            userName:
+                                                nameEditingController.text,
                                             password:
                                                 passwordEditingController.text,
                                             email:

@@ -1,5 +1,5 @@
-import 'package:dartz/dartz.dart';
 import 'package:ecommerce_project/core/errors/failure.dart';
+import '../../../../core/utils/typedef/custom_typedef.dart';
 import '../entities/login_entities.dart';
 import '../repositories/login_repository.dart';
 
@@ -8,9 +8,9 @@ class LoginUseCase {
 
   LoginUseCase({required this.repository});
 
-  Future<Either<Failure, void>> execute({required LoginEntities entities}) =>
+  FutureEitherVoid<Failure> execute({required LoginEntities entities}) =>
       repository.login(entities: entities);
 
-  loginUseCase({required LoginEntities params}) async =>
-      await repository.login(entities: params);
+  // loginUseCase({required LoginEntities params}) async =>
+  //     await repository.login(entities: params);
 }

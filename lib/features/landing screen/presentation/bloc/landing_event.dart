@@ -4,10 +4,10 @@ sealed class LandingEvent {}
 
 class LandingInitialEvent extends LandingEvent {}
 
-class LandingLoginPasswordVisibiltyToggleEvent extends LandingEvent {}
+class LandingPasswordVisibiltyToggleEvent extends LandingEvent {}
 
 class LoginButtonClickedEvent extends LandingEvent {
-  String userName;
+  String email;
   String password;
-  LoginButtonClickedEvent({required this.userName, required this.password});
+  LoginButtonClickedEvent({required this.email, required this.password});
 }

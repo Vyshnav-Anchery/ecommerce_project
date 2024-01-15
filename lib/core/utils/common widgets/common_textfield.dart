@@ -1,4 +1,3 @@
-import 'dart:developer';
 import 'package:flutter/material.dart';
 
 class CommonTextField extends StatelessWidget {
@@ -27,6 +26,8 @@ class CommonTextField extends StatelessWidget {
           hintText: hintText,
           suffixIcon: isPassword!
               ? IconButton(
+                  hoverColor: Colors.transparent,
+                  splashColor: Colors.transparent,
                   onPressed: onpressed,
                   icon: isObscure!
                       ? const Icon(Icons.visibility_off)
